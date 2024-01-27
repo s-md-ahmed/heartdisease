@@ -44,9 +44,6 @@ X_scaled = scaler.fit_transform(X_scaled)
 
 smt = SMOTE(sampling_strategy='not majority')
 X_resampled, y_resampled = smt.fit_resample(X_scaled, y)
-class_counts_after_smote = pd.Series(y_resampled).value_counts()
-st.write("Class counts after SMOTE:")
-st.write(class_counts_after_smote)
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X_resampled, y_resampled, test_size=0.2, random_state=42)
 
@@ -87,7 +84,6 @@ with st.form("user_input_form"):
                               columns=user_input_columns)
     user_input_scaled = robust_scaler.transform(user_input)
     user_input_scaled = scaler.transform(user_input_scaled)
-    true_label_user_input = 0
     if submit_button:
     # Make predictions on user input
         prediction = clf_rf.predict(user_input_scaled)
@@ -97,9 +93,6 @@ with st.form("user_input_form"):
             st.markdown(f'<p style="color:red;">Heart disease is present with severity level of {prediction[0]}</p>', unsafe_allow_html=True)
         else:
             st.markdown('<p style="color:green;">Heart disease is not there</p>', unsafe_allow_html=True)
-        classification_rep_user_input = classification_report([true_label_user_input], [prediction[0]], output_dict=True)
-        st.subheader("Classification Report (User Input)")
-        st.table(pd.DataFrame(classification_rep_user_input).transpose())
     # Display prediction
 
 
