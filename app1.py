@@ -90,7 +90,7 @@ with st.form("user_input_form"):
         # Make predictions on user input
         prediction = clf_rf.predict(user_input_scaled)
         st.subheader("Prediction")
-        st.write(prediction)
+        st.write("Passenger survived" if prediction[0] == 1 else "Passenger did not survive")
         # Display prediction
         
 
