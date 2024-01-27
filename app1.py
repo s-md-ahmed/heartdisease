@@ -89,9 +89,10 @@ with st.form("user_input_form"):
     if submit_button:
         # Make predictions on user input
         prediction = clf_rf.predict(user_input_scaled)
-
+        st.subheader("Prediction")
+        st.write(prediction)
         # Display prediction
-        st.subheader("Predicted class: ",prediction[0])
+        
 
     # Display classification report for the training set
     # st.subheader("Classification Report (Training Set)")
