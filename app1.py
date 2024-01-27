@@ -91,8 +91,8 @@ with st.form("user_input_form"):
         prediction = clf_rf.predict(user_input_scaled)
 
         # Display prediction
-        st.subheader("Prediction")
-        st.write(prediction[0])
+        st.subheader("Predicted class: ",prediction[0])
+        st.write()
 
     # Display classification report for the training set
     # st.subheader("Classification Report (Training Set)")
