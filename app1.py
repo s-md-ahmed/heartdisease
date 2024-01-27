@@ -89,6 +89,7 @@ with st.form("user_input_form"):
     if submit_button:
     # Make predictions on user input
         prediction = clf_rf.predict(user_input_scaled)
+        st.write(prediction)
         st.subheader("Prediction")
     
         if prediction[0] in [1, 2, 3, 4]:
