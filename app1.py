@@ -87,13 +87,17 @@ with st.form("user_input_form"):
     user_input_scaled = scaler.transform(user_input_scaled)
 
     if submit_button:
-        # Make predictions on user input
-        prediction = clf_rf.predict(user_input_scaled)
-        st.subheader("Prediction")
-        if prediction[0] in [1, 2, 3, 4]:
-            st.write("Heart disease is present with severity level of ", prediction[0])
-        else:
-            st.write("Heart disease is not there")
+    # Make predictions on user input
+    prediction = clf_rf.predict(user_input_scaled)
+    st.subheader("Prediction")
+    
+    if prediction[0] in [1, 2, 3, 4]:
+        st.markdown(f'<p style="color:green;">Heart disease is present with severity level of {prediction[0]}</p>', unsafe_allow_html=True)
+    else:
+        st.markdown('<p style="color:red;">Heart disease is not there</p>', unsafe_allow_html=True)
+
+    # Display prediction
+
 
         # Display prediction
 
