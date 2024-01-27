@@ -92,9 +92,9 @@ with st.form("user_input_form"):
         st.subheader("Prediction")
     
         if prediction[0] in [1, 2, 3, 4]:
-            st.markdown(f'<p style="color:green;">Heart disease is present with severity level of {prediction[0]}</p>', unsafe_allow_html=True)
+            st.markdown(f'<p style="color:red;">Heart disease is present with severity level of {prediction[0]}</p>', unsafe_allow_html=True)
         else:
-            st.markdown('<p style="color:red;">Heart disease is not there</p>', unsafe_allow_html=True)
+            st.markdown('<p style="color:green;">Heart disease is not there</p>', unsafe_allow_html=True)
 
     # Display prediction
 
