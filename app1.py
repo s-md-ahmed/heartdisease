@@ -97,7 +97,9 @@ with st.form("user_input_form"):
             st.markdown(f'<p style="color:red;">Heart disease is present with severity level of {prediction[0]}</p>', unsafe_allow_html=True)
         else:
             st.markdown('<p style="color:green;">Heart disease is not there</p>', unsafe_allow_html=True)
-
+    classification_rep_user_input = classification_report([y_test.iloc[0]], [prediction[0]], output_dict=True)
+    st.subheader("Classification Report (User Input)")
+    st.table(pd.DataFrame(classification_rep_user_input).transpose())
     # Display prediction
 
 
