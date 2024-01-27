@@ -44,7 +44,9 @@ X_scaled = scaler.fit_transform(X_scaled)
 
 smt = SMOTE(sampling_strategy='not majority')
 X_resampled, y_resampled = smt.fit_resample(X_scaled, y)
-
+class_counts_after_smote = pd.Series(y_resampled).value_counts()
+st.write("Class counts after SMOTE:")
+st.write(class_counts_after_smote)
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X_resampled, y_resampled, test_size=0.2, random_state=42)
 
@@ -89,7 +91,6 @@ with st.form("user_input_form"):
     if submit_button:
     # Make predictions on user input
         prediction = clf_rf.predict(user_input_scaled)
-        st.write(prediction)
         st.subheader("Prediction")
     
         if prediction[0] in [1, 2, 3, 4]:
