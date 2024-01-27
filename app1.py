@@ -14,7 +14,6 @@ dropped_columns = ['id', 'dataset', 'ca', 'thal', 'slope']
 data1.drop(dropped_columns, axis=1, inplace=True)
 
 mean_trestbps = data1["trestbps"].mean()
-st.write(mean_trestbps)
 data1["trestbps"].fillna(mean_trestbps, inplace=True)
 tot = data1["trestbps"].isnull().sum()
 mean_chol = data1["chol"].mean()
@@ -27,14 +26,11 @@ data1["restecg"].fillna("normal", inplace=True)
 data1["exang"].fillna(True, inplace=True)
 mean_oldpeak = data1["oldpeak"].mean()
 data1["oldpeak"].fillna(mean_oldpeak, inplace=True)
-st.write(data1.isnull().sum())
 
 # Label Encode categorical columns
 le = LabelEncoder()
 categorical_columns = ['sex', 'cp', 'fbs', 'restecg', 'exang']
 data1[categorical_columns] = data1[categorical_columns].apply(le.fit_transform)
-
-st.write(data1.head())
 
 X = data1.drop("num", axis=1)  # Features
 y = data1["num"]  # Target variable
