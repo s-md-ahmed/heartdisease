@@ -87,7 +87,7 @@ with st.form("user_input_form"):
                               columns=user_input_columns)
     user_input_scaled = robust_scaler.transform(user_input)
     user_input_scaled = scaler.transform(user_input_scaled)
-
+    true_label_user_input = 0
     if submit_button:
     # Make predictions on user input
         prediction = clf_rf.predict(user_input_scaled)
