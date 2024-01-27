@@ -92,7 +92,6 @@ with st.form("user_input_form"):
 
         # Display prediction
         st.subheader("Predicted class: ",prediction[0])
-        st.write()
 
     # Display classification report for the training set
     # st.subheader("Classification Report (Training Set)")
