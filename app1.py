@@ -9,7 +9,7 @@ from sklearn.metrics import classification_report
 
 # Load the dataset
 np.random.seed(42)
-data1 = pd.read_csv("D:/MLproject datasets/heart_disease_uci.csv")
+data1 = pd.read_csv(r"heart_disease_uci.csv")
 dropped_columns = ['id', 'dataset', 'ca', 'thal', 'slope']
 data1.drop(dropped_columns, axis=1, inplace=True)
 st.write(data1.head())
