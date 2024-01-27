@@ -77,7 +77,6 @@ with st.form("user_input_form"):
 
     # Get the correct ordering of columns
     user_input_columns = X.columns
-    st.write(user_input_columns)
 
     # Create user_input DataFrame
     user_input = pd.DataFrame({'age': [Age], 'sex': [sex], 'cp': [cp], 'trestbps': [trestbps],
@@ -86,7 +85,6 @@ with st.form("user_input_form"):
                               columns=user_input_columns)
     user_input_scaled = robust_scaler.transform(user_input)
     user_input_scaled = scaler.transform(user_input_scaled)
-    st.write(user_input_scaled[:5])
 
     if submit_button:
         # Make predictions on user input
