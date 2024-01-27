@@ -90,7 +90,10 @@ with st.form("user_input_form"):
         # Make predictions on user input
         prediction = clf_rf.predict(user_input_scaled)
         st.subheader("Prediction")
-        st.write("Heart disease is present with severity level of ", prediction[0] if prediction[0] in [1, 2, 3, 4] else "Heart disease is not there")
+        if prediction[0] in [1, 2, 3, 4]:
+            st.write("Heart disease is present with severity level of ", prediction[0])
+        else:
+            st.write("Heart disease is not there")
 
         # Display prediction
 
