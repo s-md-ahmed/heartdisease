@@ -92,7 +92,7 @@ with st.form("user_input_form"):
 
         # Display prediction
         st.subheader("Prediction")
-        st.write(prediction)
+        st.write(prediction[0])
 
     # Display classification report for the training set
     # st.subheader("Classification Report (Training Set)")
