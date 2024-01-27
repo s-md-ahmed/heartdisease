@@ -12,7 +12,6 @@ np.random.seed(42)
 data1 = pd.read_csv(r"heart_disease_uci.csv")
 dropped_columns = ['id', 'dataset', 'ca', 'thal', 'slope']
 data1.drop(dropped_columns, axis=1, inplace=True)
-st.write(data1.head())
 
 mean_trestbps = data1["trestbps"].mean()
 st.write(mean_trestbps)
