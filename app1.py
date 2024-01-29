@@ -19,13 +19,7 @@ except FileNotFoundError:
     theme_name = "default"
 
 # Set custom theme
-st.set_page_config(
-    page_title="Your Streamlit App",
-    page_icon=":chart_with_upwards_trend:",
-    layout="wide",  # or "centered"
-    initial_sidebar_state="auto",
-    theme=theme_name  # Pass the theme name as a string
-)
+st.set_theme(theme_name)
 # Load the dataset
 np.random.seed(42)
 data1 = pd.read_csv(r"heart_disease_uci.csv")
