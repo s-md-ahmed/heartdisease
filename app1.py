@@ -6,7 +6,25 @@ from sklearn.preprocessing import MinMaxScaler, RobustScaler, LabelEncoder
 import streamlit as st
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
+import toml
 
+# Read custom theme settings from config.toml
+try:
+    with open("config.toml", "r") as toml_file:
+        config_data = toml.load(toml_file)
+        theme_settings = config_data.get("theme", {})
+except FileNotFoundError:
+    # Handle the case when the config.toml file is not found
+    theme_settings = {}
+
+# Set custom theme
+st.set_page_config(
+    page_title="Your Streamlit App",
+    page_icon=":chart_with_upwards_trend:",
+    layout="wide",  # or "centered"
+    initial_sidebar_state="auto",
+    **theme_settings  # Pass the theme settings as keyword arguments
+)
 # Load the dataset
 np.random.seed(42)
 data1 = pd.read_csv(r"heart_disease_uci.csv")
