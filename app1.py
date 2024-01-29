@@ -6,20 +6,6 @@ from sklearn.preprocessing import MinMaxScaler, RobustScaler, LabelEncoder
 import streamlit as st
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
-import toml
-
-# Read custom theme settings from config.toml
-try:
-    with open("config.toml", "r") as toml_file:
-        config_data = toml.load(toml_file)
-        theme_name = config_data.get("theme", "default")  # Provide a default theme if not specified
-except FileNotFoundError:
-    # Handle the case when the config.toml file is not found
-    st.error("Error: config.toml file not found.")
-    theme_name = "default"
-
-# Set custom theme
-st.set_theme(theme_name)
 # Load the dataset
 np.random.seed(42)
 data1 = pd.read_csv(r"heart_disease_uci.csv")
