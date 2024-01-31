@@ -4,3 +4,13 @@ backgroundColor="#1a1a19"
 secondaryBackgroundColor="#142314"
 textColor="#27ad8a"
 font="serif"
+[css]
+source = '''
+@media (max-width: 200px) {
+    body {
+        /* Adjust styles for smaller screens */
+        background-color: #1a1a19;
+        color: #27ad8a;
+    }
+}
+'''
