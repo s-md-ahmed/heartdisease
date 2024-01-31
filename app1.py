@@ -7,7 +7,20 @@ import streamlit as st
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 import toml
-
+st.markdown(
+    '''
+    <style>
+    @media (max-width: 600px) {
+        body {
+            /* Adjust styles for smaller screens */
+            background-color: #1a1a19;
+            color: #27ad8a;
+        }
+    }
+    </style>
+    ''',
+    unsafe_allow_html=True
+)
 # Read custom theme settings from config.toml
 
 # Load the dataset
