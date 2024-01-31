@@ -6,7 +6,7 @@ textColor="#27ad8a"
 font="serif"
 [css]
 source = '''
-@media (max-width: 100px) {
+@media (max-width: 200px) {
     body {
         /* Adjust styles for smaller screens */
         background-color: #1a1a19;
