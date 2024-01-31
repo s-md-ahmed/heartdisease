@@ -10,7 +10,7 @@ import toml
 st.markdown(
     '''
     <style>
-    @media (max-width: 600px) {
+    @media (max-width: 100px) {
         body {
             /* Adjust styles for smaller screens */
             background-color: #1a1a19;
