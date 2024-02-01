@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 from imblearn.over_sampling import SMOTE
 import streamlit as st
 from sklearn.metrics import classification_report
-
+import numpy as np
 # Load the dataset
 np.random.seed(42)
 data1 = pd.read_csv("heart_disease_uci.csv")
