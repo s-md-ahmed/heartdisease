@@ -7,20 +7,6 @@ import streamlit as st
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 import toml
-st.markdown(
-    '''
-    <style>
-    @media (max-width: 100px) {
-        body {
-            /* Adjust styles for smaller screens */
-            background-color: #1a1a19;
-            color: #27ad8a;
-        }
-    }
-    </style>
-    ''',
-    unsafe_allow_html=True
-)
 # Read custom theme settings from config.toml
 
 # Load the dataset
@@ -33,7 +19,7 @@ mean_trestbps = data1["trestbps"].mean()
 data1["trestbps"].fillna(mean_trestbps, inplace=True)
 tot = data1["trestbps"].isnull().sum()
 mean_chol = data1["chol"].mean()
-data1["chol"].fillna(mean_trestbps, inplace=True)
+data1["chol"].fillna(mean_chol, inplace=True)
 tot1 = data1["chol"].isnull().sum()
 data1["fbs"].fillna(True, inplace=True)
 mean_thalch = data1["thalch"].mean()
@@ -115,9 +101,9 @@ with st.form("user_input_form"):
         # Display prediction
 
     # Display classification report for the training set
-    # st.subheader("Classification Report (Training Set)")
-    # y_train_pred = clf_rf.predict(X_train)
-    # classification_rep_train = classification_report(y_train, y_train_pred, output_dict=True)
+    #st.subheader("Classification Report (Training Set)")
+    #y_train_pred = clf_rf.predict(X_train)
+    #classification_rep_train = classification_report(y_train, y_train_pred, output_dict=True)
     # st.table(pd.DataFrame(classification_rep_train).transpose())
 
     # # Display classification report for the test set
