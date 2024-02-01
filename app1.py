@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 from imblearn.over_sampling import SMOTE
 import streamlit as st
 from sklearn.metrics import classification_report
-import numpy as np
+
 # Load the dataset
 np.random.seed(42)
 data1 = pd.read_csv("heart_disease_uci.csv")
@@ -51,11 +51,52 @@ X_train, X_test, y_train, y_test = train_test_split(X_resampled, y_resampled, te
 clf_rf = RandomForestClassifier(n_estimators=30, max_depth=9)
 clf_rf.fit(X_train, y_train)
 
-# Display classification report for the training set
-st.subheader("Classification Report (Training Set)")
-y_train_pred = clf_rf.predict(X_train)
-classification_rep_train = classification_report(y_train, y_train_pred, output_dict=True)
-st.table(pd.DataFrame(classification_rep_train).transpose())
+# Streamlit UI
+st.title("Welcome to my heart disease prediction App")
+
+with st.form("user_input_form"):
+    # Create input fields for features
+    Age = st.slider("Age", int(X['age'].min()), int(X['age'].max()), 50)
+    sex = st.selectbox("Sex", ["Male", "Female"])
+    cp = st.selectbox("cp", ["atypical angina", "non-anginal", "typical angina", "asymptomatic"])
+    trestbps = st.slider("trestbps", int(X['trestbps'].min()), int(X['trestbps'].max()), int(X['trestbps'].mean()))
+    chol = st.slider("Cholestrol", int(X['chol'].min()), int(X['chol'].max()), int(X['chol'].mean()))
+    fbs_options = [False, True]
+    fbs = st.selectbox("fbs", fbs_options)
+    restecg = st.selectbox("Restecg", ["lv hypertrophy", "normal", "st-t abnormality"])
+    thalch = st.slider("Thalch", float(X['thalch'].min()), float(X['thalch'].max()), float(X['thalch'].mean()))
+    exang_options = [False, True]
+    exang = st.selectbox("exang", exang_options)
+    oldpeak = st.slider("oldpeak", float(X['oldpeak'].min()), float(X['oldpeak'].max()), float(X['oldpeak'].mean()))
+    submit_button = st.form_submit_button("Submit Prediction")
+
+    # Label encode user input
+    sex = le.transform([sex])[0]
+    cp = le.transform([cp])[0]
+    fbs = le.transform([fbs])[0]
+    restecg = le.transform([restecg])[0]
+    exang = le.transform([exang])[0]
+
+    # Get the correct ordering of columns
+    user_input_columns = X.columns
+
+    # Create user_input DataFrame
+    user_input = pd.DataFrame({'age': [Age], 'sex': [sex], 'cp': [cp], 'trestbps': [trestbps],
+                               'chol': [chol], 'fbs': [fbs], 'restecg': [restecg],
+                               'thalch': [thalch], 'exang': [exang], 'oldpeak': oldpeak},
+                              columns=user_input_columns)
+    user_input_scaled = robust_scaler.transform(user_input)
+    user_input_scaled = scaler.transform(user_input_scaled)
+
+if submit_button:
+    # Make predictions on user input
+    prediction = clf_rf.predict(user_input_scaled)
+    st.subheader("Prediction")
+
+    if prediction[0] in [1, 2, 3, 4]:
+        st.markdown(f'<p style="color:red;">Heart disease is present with severity level of {prediction[0]}</p>', unsafe_allow_html=True)
+    else:
+        st.markdown('<p style="color:green;">Heart disease is not there</p>', unsafe_allow_html=True)
 
 # Display classification report for the test set
 st.subheader("Classification Report (Test Set)")
