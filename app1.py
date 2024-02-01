@@ -97,7 +97,11 @@ if submit_button:
         st.markdown(f'<p style="color:red;">Heart disease is present with severity level of {prediction[0]}</p>', unsafe_allow_html=True)
     else:
         st.markdown('<p style="color:green;">Heart disease is not there</p>', unsafe_allow_html=True)
-
+# Display classification report for the training set
+st.subheader("Classification Report (Training Set)")
+y_train_pred = clf_rf.predict(X_train)
+classification_rep_train = classification_report(y_train, y_train_pred, output_dict=True)
+st.table(pd.DataFrame(classification_rep_train).transpose())
 # Display classification report for the test set
 st.subheader("Classification Report (Test Set)")
 y_test_pred = clf_rf.predict(X_test)
