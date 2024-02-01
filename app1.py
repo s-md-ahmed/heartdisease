@@ -98,12 +98,12 @@ if submit_button:
     else:
         st.markdown('<p style="color:green;">Heart disease is not there</p>', unsafe_allow_html=True)
 # Display classification report for the training set
-st.subheader("Classification Report (Training Set)")
-y_train_pred = clf_rf.predict(X_train)
-classification_rep_train = classification_report(y_train, y_train_pred, output_dict=True)
-st.table(pd.DataFrame(classification_rep_train).transpose())
-# Display classification report for the test set
-st.subheader("Classification Report (Test Set)")
-y_test_pred = clf_rf.predict(X_test)
-classification_rep_test = classification_report(y_test, y_test_pred, output_dict=True)
-st.table(pd.DataFrame(classification_rep_test).transpose())
+# st.subheader("Classification Report (Training Set)")
+# y_train_pred = clf_rf.predict(X_train)
+# classification_rep_train = classification_report(y_train, y_train_pred, output_dict=True)
+# st.table(pd.DataFrame(classification_rep_train).transpose())
+# # Display classification report for the test set
+# st.subheader("Classification Report (Test Set)")
+# y_test_pred = clf_rf.predict(X_test)
+# classification_rep_test = classification_report(y_test, y_test_pred, output_dict=True)
+# st.table(pd.DataFrame(classification_rep_test).transpose())
