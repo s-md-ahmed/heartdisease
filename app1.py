@@ -64,7 +64,7 @@ with st.form("user_input_form"):
     fbs_options = [False, True]
     fbs = st.selectbox("fbs", fbs_options)
     restecg = st.selectbox("Restecg", ["lv hypertrophy", "normal", "st-t abnormality"])
-    thalch = st.slider("Thalch", float(X['thalch'].min()), float(X['thalch'].max()), float(X['thalch'].mean()))
+    thalch = st.slider("Thalch", float(X['thalch'].min()), float(X['thalch'].max()), 65))
     exang_options = [False, True]
     exang = st.selectbox("exang", exang_options)
     oldpeak = st.slider("oldpeak", float(X['oldpeak'].min()), float(X['oldpeak'].max()), float(X['oldpeak'].mean()))
