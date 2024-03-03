@@ -109,11 +109,5 @@ if submit_button:
 # st.table(pd.DataFrame(classification_rep_test).transpose())
 
 # Import your analytics integration module
-from analytics import track_event
 
-# Define your Streamlit app here
-
-if __name__ == "__main__":
-    # Run the Streamlit app
-    main()
 
