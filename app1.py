@@ -107,3 +107,13 @@ if submit_button:
 # y_test_pred = clf_rf.predict(X_test)
 # classification_rep_test = classification_report(y_test, y_test_pred, output_dict=True)
 # st.table(pd.DataFrame(classification_rep_test).transpose())
+
+# Import your analytics integration module
+from analytics import track_event
+
+# Define your Streamlit app here
+
+if __name__ == "__main__":
+    # Run the Streamlit app
+    main()
+
